@@ -11,7 +11,6 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AdMob Sample',
@@ -52,6 +51,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  void initState() {
+    super.initState();
+    // Load ads.
+    final BannerAd myBanner = BannerAd(
+      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: BannerAdListener(),
+    );
+    myBanner.load();
+  }
 
   void _incrementCounter() {
     setState(() {
